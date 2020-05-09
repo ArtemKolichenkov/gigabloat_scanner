@@ -10,7 +10,7 @@ test:
 
 lint:
 	@echo "\n${BLUE}Running Pylint against source and test files...${NC}\n"
-	@poetry run pylint --rcfile=setup.cfg **/*.py
+	@poetry run pylint --rcfile=setup.cfg gigabloat tests
 	@echo "\n${BLUE}Running Flake8 against source and test files...${NC}\n"
 	@poetry run flake8
 	@echo "\n${BLUE}Running Bandit against source files...${NC}\n"
