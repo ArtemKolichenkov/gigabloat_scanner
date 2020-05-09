@@ -13,6 +13,17 @@ Tests should be run with makefile since testing absolute paths fucks up (I guess
 
 Write up what to do with DS_Store, it will fuck up the tests
 
+
+Configure VScode workspace settings to get black and pylint path
+`poetry env info --path`
+```json
+{
+    "python.formatting.blackPath": "<poetry_env_path>/bin/black",
+    "python.formatting.provider": "black",
+    "python.linting.pylintPath": "<poetry_env_path>/bin/pylint"
+}
+```
+
 ## General algorithm
 
 `scanDirectory` is called with directory to scan.
