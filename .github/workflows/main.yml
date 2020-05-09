@@ -27,15 +27,12 @@ jobs:
       with:
         # Version range or exact version of a Python version to use, using SemVer's version range syntax.
         python-version: 3.8.2
-    - name: Install Poetry
-      uses: dschep/install-poetry-action@v1.3
-      with:
-        # Version of Poetry to use
-        version: 1.0.5
+    - name: Poetry Install
+      uses: knowsuchagency/poetry-install@v2
     - name: Initialize project
-      run: |
-        poetry env use 3.8.2
-        poetry install
+      run: poetry install
+    - name: Where am I
+      run: echo $PWD
     - name: Run tests
       run: poetry run pytest
 
