@@ -31,6 +31,8 @@ jobs:
       uses: knowsuchagency/poetry-install@v2
     - name: Initialize project
       run: poetry install
+    - name: Where am I
+      run: echo $PWD
     - name: Run tests
       run: poetry run pytest
 
