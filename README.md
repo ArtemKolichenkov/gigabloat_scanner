@@ -1,5 +1,7 @@
 # Gigabloat File Manager
 
+Note: this project is in it's baby stage, do not use it, like at all. Come back later to see how it goes.
+
 ## Development
 
 For now Gigabloat was developed mostly on MacOS (Catalina), therefore I can only provide clear instructions for development related to MacOS, although I suppose it would be very similar on Linux and on Windows.
