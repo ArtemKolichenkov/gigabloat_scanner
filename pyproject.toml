@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "gigabloat"
 version = "0.1.0"
-description = ""
+description = "Tool to get general file and directory stats"
 authors = ["Artem Kolichenkov <artem@kolichenkov.com>"]
 
 [tool.poetry.dependencies]
