@@ -29,19 +29,23 @@ class Scanner:
         new_directory = Directory(dir_to_scan, parent)
 
         # 1. Get files
-        filepaths = [os.path.join(dir_to_scan, f) for f in treeobjects if os.path.isfile(os.path.join(dir_to_scan, f))]
+        filepaths = [
+            os.path.join(dir_to_scan, f)
+            for f in treeobjects
+            if os.path.isfile(os.path.join(dir_to_scan, f))
+        ]
         dir_files = [
-            File(
-                path,
-                os.stat(path).st_size,
-                pathlib.Path(path).suffix,
-                new_directory
-            )
-            for path in filepaths]
+            File(path, os.stat(path).st_size, pathlib.Path(path).suffix, new_directory)
+            for path in filepaths
+        ]
         self.file_count = self.file_count + len(dir_files)
 
         # 2. Get subdirectories
-        dirnames = [os.path.join(dir_to_scan, d) for d in treeobjects if os.path.isdir(os.path.join(dir_to_scan, d))]
+        dirnames = [
+            os.path.join(dir_to_scan, d)
+            for d in treeobjects
+            if os.path.isdir(os.path.join(dir_to_scan, d))
+        ]
         subdirs = [self.scan_directory(d, parent) for d in dirnames]
 
         new_directory.update_content(dir_files, subdirs)

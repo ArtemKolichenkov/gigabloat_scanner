@@ -4,7 +4,7 @@ from .report import ReportPrinter
 
 
 @click.command()
-@click.argument('target', required=1)
+@click.argument("target", required=1)
 def scan(target):
     """Get statistics about directory"""
     target_scanner = Scanner(target)

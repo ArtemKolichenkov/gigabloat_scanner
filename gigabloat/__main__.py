@@ -10,5 +10,5 @@ def cli():
 
 cli.add_command(gatherCommands.scan)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     cli()

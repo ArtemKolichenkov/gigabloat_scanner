@@ -14,11 +14,11 @@ class Converter:
     def webpToJpeg(self):
         for file in glob.glob(self.path + "*.webp"):
             try:
-                name = ntpath.basename(file).split('.')[0]
+                name = ntpath.basename(file).split(".")[0]
                 im = Image.open(file).convert("RGB")
-                im.save(self.path + name + '.jpg', 'jpeg')
+                im.save(self.path + name + ".jpg", "jpeg")
                 print(file)
-                os.rename(file, self.path + "webp/" + name + '.webp')
+                os.rename(file, self.path + "webp/" + name + ".webp")
             except Exception as e:  # pylint: disable=W0703
                 print("Something went wrong while converting " + file)
                 print(e)

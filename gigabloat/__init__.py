@@ -1,1 +1,1 @@
-from .gatherer import Scanner # noqa
+from .gatherer import Scanner  # noqa
