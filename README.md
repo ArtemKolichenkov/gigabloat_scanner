@@ -1,30 +1,40 @@
 # Gigabloat File Manager
 
 ## Development
-You need to add this to zhrc to be able to switch environments and use poetry  
-`eval "$(pyenv init -)"`
 
+For now Gigabloat was developed mostly on MacOS (Catalina), therefore I can only provide clear instructions for development related to MacOS, although I suppose it would be very similar on Linux and on Windows.
+
+### MacOS
+
+This project relies on the follwoing packages during development.  
+
+- [PyEnv](https://github.com/pyenv/pyenv) - used to switch to the specific python version this package requires
+- [Poetry](https://python-poetry.org/) - used as a dependency management solution.
+- [Black](https://github.com/psf/black) - code formatter.
+
+0. Clone/Fork this repo
+1. Install PyEnv and Poetry (see their repos on instructions, Gigabloat needs just basic installation)
+2. You need to add this line to zhrc, otherwise you'll see some errors while using Poetry   
+`eval "$(pyenv init -)"`
+3. In the root folder of this repo specify python version to use with PyEnv (this will update .python-version file)  
 ```shell
 pyenv install 3.8.2
 pyenv local 3.8.2
 ```
-
-Tests should be run with makefile since testing absolute paths fucks up (I guess)
-
-Write up what to do with DS_Store, it will fuck up the tests
-
-
-Configure VScode workspace settings to get black and pylint path
-`poetry env info --path`
-```json
-{
-    "python.formatting.blackPath": "<poetry_env_path>/bin/black",
-    "python.formatting.provider": "black",
-    "python.linting.pylintPath": "<poetry_env_path>/bin/pylint"
-}
-```
+4. Run `poetry install`
+5. Configure VScode workspace settings to use black and pylint  
+    5.1. Get poetry virtual env path `poetry env info --path`  
+    5.2. Create `.vscode` folder with `settings.json` file in it (in root of this project) and add the following lines  
+    ```json
+    {
+        "python.formatting.blackPath": "<poetry_env_path>/bin/black",
+        "python.formatting.provider": "black",
+        "python.linting.pylintPath": "<poetry_env_path>/bin/pylint"
+    }
+    ```
 
 ## General algorithm
+_This section is just for me to keep track of stuff, experimental/unfinished/uncertain_
 
 `scanDirectory` is called with directory to scan.
 for it we:
@@ -40,21 +50,6 @@ for it we:
     - assing `self.root_directory` for easy access
 6. return the `Directory` to be used in step 2
 
-## TODO
-
-- [ ] License
-- [ ] Progressbar
-- [ ] Add empty directory finder
-- [ ] Count the file size for each extension
-- [ ] Directory/File paths must be absolute  
-If you give absolute path it will make use of abs path. However it would be nice to give relative path via CLI and get abs path in return.
-- [ ] Get all files method?  
-I wonder if it makes sense since we could query/filter for all files from the main Scanner object. However, it might be good to be able to do it via CLI. Not sure.
-- [ ] filetypes/categories are not counted with subdirs in mind. Should be counted I guess (with destinciton if its directly in the folder or deeper inside).
-- [ ] Space on the disk thing (4kb minimum on macOS even if file is like 2 Bytes?)
-- [ ] We can actually maintain multiple scans easily i guess
-- [ ] Tests' expected results could be just a proper scanfile
-
 ## Proposed CLI interface
 
 Command `gigabloat scan`  
@@ -63,15 +58,20 @@ Options:
 `--dir <directory>` @required  
 directory to scan  
 `--json`  
+_Not implemented yet_  
 provide json output  
 `--table`  
+_Not implemented yet_  
 provide tabulat output  
 `--pyobj`  
+_Not implemented yet_  
 provide pyobj output  
 `--nofile`  
+_Not implemented yet_  
 do not save report file after scan is finished  
 
 Command `gigabloat filter`  
+_Not implemented yet_  
 Filter some specific stat  
 `--f <file>` @required  
 specify report file  
@@ -89,8 +89,3 @@ show amount and size of videos
 show amount and size of audio  
 `--media`  
 show amount and size of media files (phtos, images, audio)  
-
-
-## Non-MVP ideas
-
-- Add new categories by user (just list of extensions)
